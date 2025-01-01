@@ -10,11 +10,17 @@ const HomeLayout = () => {
 
             <Banner />
 
-            <SwiperHome/>
+            <SwiperHome />
 
-            <BitroBoss/>
+            <BitroBoss />
 
-            <HomeMenu/>
+            <HomeMenu />
+
+
+            {/* --------------------------call us section---------------------- */}
+            <div className='p-20 text-center text-white text-4xl font-semibold bg-black mb-16 italic'>
+                <h1>Call Us: +88 0192345678910</h1>
+            </div>
 
 
         </div>
