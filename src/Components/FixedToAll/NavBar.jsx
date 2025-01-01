@@ -6,7 +6,7 @@ import pp from "../../assets/others/profile.png"
 
 const NavBar = () => {
     return (
-        <div className='bg-black/50 backdrop-blur min-w-7xl sticky top-0 z-50 text-white flex items-center justify-between px-10 py-2 text-sm'>
+        <div className='bg-black/50 navbar backdrop-blur fixed max-w-screen-xl mx-auto top-0 z-50 text-white flex items-center justify-between px-10 py-2 text-sm'>
 
             {/* ------------------logo and icon----------------- */}
             <div>
@@ -31,7 +31,7 @@ const NavBar = () => {
                 <img src={pp} alt="👦" className='rounded-full w-12' />
 
                 <Link to={'/login'}>
-                    <button className="btn btn-sm btn-outline">Login</button>
+                    <button className="btn btn-sm btn-outline btn-warning">Login</button>
                 </Link>
 
             </div>
