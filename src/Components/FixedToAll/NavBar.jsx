@@ -11,7 +11,6 @@ const NavBar = () => {
             {/* ------------------logo and icon----------------- */}
             <div>
                 <h2 className='text-lg font-serif font-bold'>BISTRO BOSS</h2>
-                <p className='uppercase '>Restaurant</p>
             </div>
 
             {/* ----------------------rough----------------------- */}
