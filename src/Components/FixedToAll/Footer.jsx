@@ -28,7 +28,7 @@ const Footer = () => {
                 </aside>
 
                 {/* -------------second part----------- */}
-                <nav className='bg-gray-500 p-10 text-center'>
+                <nav className='bg-gray-500 px-10 py-20 text-center'>
                     <h6 className="footer-title">Follow US</h6>
                     <h6 className="mb-4">Join Us on Social Media</h6>
                     <div className="flex gap-4 items-center justify-center text-3xl">
