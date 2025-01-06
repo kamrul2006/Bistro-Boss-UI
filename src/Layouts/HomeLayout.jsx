@@ -5,6 +5,7 @@ import BitroBoss from '../Components/Home/BitroBoss';
 import HomeMenu from '../Components/Home/HomeMenu';
 import ShouldTry from '../Components/Home/ShouldTry';
 import Featured from '../Components/Home/Featured';
+import TESTIMONIALS from '../Components/Home/TESTIMONIALS';
 
 const HomeLayout = () => {
     return (
@@ -26,6 +27,8 @@ const HomeLayout = () => {
             <ShouldTry />
 
             <Featured />
+
+            <TESTIMONIALS />
         </div>
     );
 };
