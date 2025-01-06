@@ -4,6 +4,7 @@ import SwiperHome from '../Components/Home/SwiperHome';
 import BitroBoss from '../Components/Home/BitroBoss';
 import HomeMenu from '../Components/Home/HomeMenu';
 import ShouldTry from '../Components/Home/ShouldTry';
+import Featured from '../Components/Home/Featured';
 
 const HomeLayout = () => {
     return (
@@ -24,7 +25,7 @@ const HomeLayout = () => {
 
             <ShouldTry />
 
-
+            <Featured />
         </div>
     );
 };
