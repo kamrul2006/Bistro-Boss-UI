@@ -1,12 +1,12 @@
 import React from 'react';
 import ConBanner from '../Components/Contact/ConBanner';
 
-const ContuctUsLayout = () => {
+const ContactUsLayout = () => {
     return (
-        <div>
+        <div className='mt-20'>
             <ConBanner />
         </div>
     );
 };
 
-export default ContuctUsLayout;
+export default ContactUsLayout;
