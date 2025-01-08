@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MenuSubBanner from '../Share/MenuSubBanner';
-import bg from "../../assets/menu/dessert-bg.jpeg"
+import bg from "../../assets/menu/pizza-bg.jpg"
 
-const DESSERTS = () => {
+
+const PIZZA = () => {
 
     const [menus, setMenu] = useState([])
 
@@ -17,12 +18,12 @@ const DESSERTS = () => {
     return (
         <div>
             <MenuSubBanner
-                heading={"DESSERTS"}
+                heading={"PIZZA"}
                 subHeading={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 bg={bg} />
 
             <div className='grid grid-cols-2 gap-7 mx-20 my-10'>
-                {menus.filter(item => item.category == 'dessert').slice(0, 6).map(menu => <div key={menu._id} className='flex items-center gap-4 border-y-2 px-5 py-2' >
+                {menus.filter(item => item.category == 'pizza').slice(0, 6).map(menu => <div key={menu._id} className='flex items-center gap-4 border-y-2 px-5 py-2' >
 
                     <img src={menu.image} className='w-28 h-24 rounded-e-full rounded-t-full' />
 
@@ -46,4 +47,5 @@ const DESSERTS = () => {
     );
 };
 
-export default DESSERTS;
+
+export default PIZZA;
