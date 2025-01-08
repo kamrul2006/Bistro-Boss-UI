@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import HeadingTitle from '../Share/HeadingTitle';
+import { Link } from 'react-router-dom';
 
 const TodaysOffer = () => {
 
@@ -37,7 +38,9 @@ const TodaysOffer = () => {
             </div>
 
             <div className='text-center justify-center items-center flex my-10 '>
-                <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
+                <Link to={'/ourShop'}>
+                    <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
+                </Link>
             </div>
 
         </div>
