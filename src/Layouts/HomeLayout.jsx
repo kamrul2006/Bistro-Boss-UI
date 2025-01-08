@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../Components/Home/Banner';
 import SwiperHome from '../Components/Home/SwiperHome';
 import BitroBoss from '../Components/Home/BitroBoss';
@@ -8,6 +8,12 @@ import Featured from '../Components/Home/Featured';
 import TESTIMONIALS from '../Components/Home/TESTIMONIALS';
 
 const HomeLayout = () => {
+
+        useEffect(() => {
+            document.title = "BISTROBoss || Home"
+        }, [])
+    
+
     return (
         <div>
 
