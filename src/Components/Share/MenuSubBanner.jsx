@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const MenuSubBanner = ({ subHeading, heading, bg, cate }) => {
 
-    console.log(cate)
+    // console.log(cate)
 
     const [menus, setMenu] = useState([])
 
