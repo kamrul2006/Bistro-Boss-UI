@@ -16,9 +16,9 @@ const MenuSubBanner = ({ subHeading, heading, bg, cate }) => {
 
     return (
         <div>
-            <div style={{ background: `url(${bg})` }} className='h-[400px] bg-cover mx-20 text-white flex items-center justify-center p-24'>
+            <div style={{ background: `url(${bg})` }} className='h-[400px] bg-contain bg-center mx-20 text-white flex items-center justify-center p-24 backdrop-blur-sm'>
 
-                <div className='w-full h-full object-cover bg-black/50 flex items-center justify-center flex-col gap-4'>
+                <div className='w-full h-full object-cover backdrop-blur-sm rounded-xl bg-black/50 flex items-center justify-center flex-col gap-4'>
                     <h1 className="text-3xl font-serif">{heading}</h1>
                     <p className='text-center text-sm px-20'>{subHeading}</p>
 

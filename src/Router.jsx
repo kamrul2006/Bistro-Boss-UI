@@ -4,6 +4,7 @@ import HomeLayout from "./Layouts/HomeLayout";
 import ContactUsLayout from "./Layouts/ContuctUsLayout";
 import ErrorPage from "./Components/FixedToAll/ErrorPage";
 import OurMenyLayout from "./Layouts/OurMenyLayout";
+import OurShop from "./Layouts/OurShopLayout";
 
 
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/menu',
                 element: <OurMenyLayout />
+            },
+            {
+                path: '/ourShop',
+                element: <OurShop />
             },
         ]
     },
