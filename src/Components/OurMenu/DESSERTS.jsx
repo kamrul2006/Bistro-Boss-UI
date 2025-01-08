@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import HeadingTitle from '../Share/HeadingTitle';
+import MenuSubBanner from '../Share/MenuSubBanner';
+import bg from "../../assets/menu/dessert-bg.jpeg"
 
-const TodaysOffer = () => {
+const DESSERTS = () => {
 
     const [menus, setMenu] = useState([])
 
@@ -14,14 +15,14 @@ const TodaysOffer = () => {
     // console.log(menu)
 
     return (
-        <div className='my-20'>
-
-            <HeadingTitle
+        <div>
+            <MenuSubBanner
                 heading={"TODAY'S OFFER"}
-                subHeading={"Don't miss"} />
+                subHeading={"Don't miss"}
+                bg={bg} />
 
-            <div className='grid grid-cols-2 gap-7 mx-20'>
-                {menus.filter(item => item.category == 'offered').map(menu => <div key={menu._id} className='flex items-center gap-4 border-y-2 px-5 py-2' >
+            <div className='grid grid-cols-2 gap-7 mx-20 my-10'>
+                {menus.filter(item => item.category == 'dessert').slice(0, 6).map(menu => <div key={menu._id} className='flex items-center gap-4 border-y-2 px-5 py-2' >
 
                     <img src={menu.image} className='w-28 h-24 rounded-e-full rounded-t-full' />
 
@@ -40,8 +41,9 @@ const TodaysOffer = () => {
                 <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
             </div>
 
+
         </div>
     );
 };
 
-export default TodaysOffer;
+export default DESSERTS;
