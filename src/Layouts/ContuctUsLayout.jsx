@@ -1,10 +1,16 @@
 import React from 'react';
 import ConBanner from '../Components/Contact/ConBanner';
+import OurLocation from '../Components/Contact/ourLocation';
+import CONTACTFORM from '../Components/Contact/CONTACTFORM';
 
 const ContactUsLayout = () => {
     return (
-        <div className='mt-20'>
+        <div className='space-y-20'>
             <ConBanner />
+
+            <OurLocation />
+
+            <CONTACTFORM />
         </div>
     );
 };
