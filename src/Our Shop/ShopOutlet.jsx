@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 
 const ShopOutlet = () => {
+
+    const { cata } = useParams()
+    // console.log(cata)
 
     const [menus, setMenu] = useState([])
 
@@ -44,6 +48,7 @@ const ShopOutlet = () => {
                                     <img
                                         src={menu.image}
                                         alt="food" />
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
                                 </figure>
                                 <div className="card-body bg-gray-100">
                                     <h2 className="text-xl font-bold text-center">{menu.name}</h2>
@@ -70,6 +75,8 @@ const ShopOutlet = () => {
                                     <img
                                         src={menu.image}
                                         alt="food" />
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
+
                                 </figure>
                                 <div className="card-body bg-gray-100">
                                     <h2 className="text-xl font-bold text-center">{menu.name}</h2>
@@ -93,6 +100,8 @@ const ShopOutlet = () => {
 
                             <div className="card bg-base-100 w-96 shadow-xl">
                                 <figure>
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
+
                                     <img
                                         src={menu.image}
                                         alt="food" />
@@ -119,6 +128,8 @@ const ShopOutlet = () => {
 
                             <div className="card bg-base-100 w-96 shadow-xl">
                                 <figure>
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
+
                                     <img
                                         src={menu.image}
                                         alt="food" />
@@ -145,6 +156,8 @@ const ShopOutlet = () => {
 
                             <div className="card bg-base-100 w-96 shadow-xl">
                                 <figure>
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
+
                                     <img
                                         src={menu.image}
                                         alt="food" />

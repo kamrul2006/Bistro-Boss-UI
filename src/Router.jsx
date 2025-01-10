@@ -16,7 +16,9 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <HomeLayout />
+                element: <HomeLayout />,
+                loader: () => fetch('http://localhost:5000/reviews')
+
             },
             {
                 path: '/Contact',
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
                 element: <OurMenyLayout />
             },
             {
-                path: '/ourShop',
+                path: '/ourShop/:cata',
                 element: <OurShop />
             },
         ]

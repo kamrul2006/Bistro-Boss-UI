@@ -19,7 +19,7 @@ const NavBar = () => {
                 <NavLink to={'/Contact'}>CONTACT us</NavLink>
                 <NavLink to={'/dashboard'}>DASHBOARD</NavLink>
                 <NavLink to={'/menu'}>Our Menu</NavLink>
-                <NavLink to={'/ourShop'}>Our Shop</NavLink>
+                <NavLink to={'/ourShop/salad'}>Our Shop</NavLink>
                 <Link to={'/cart'}>
                     <img src={cart} alt="🛒" className='w-10' />
                 </Link>

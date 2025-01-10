@@ -44,7 +44,7 @@ const MenuSubBanner = ({ subHeading, heading, bg, cate }) => {
                 </div>
 
                 <div className='text-center justify-center items-center flex my-10 '>
-                    <Link to={'/ourShop'}>
+                    <Link to={`/ourShop/${cate}`}>
                     <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
                     </Link>
                 </div>

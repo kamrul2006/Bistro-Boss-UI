@@ -7,18 +7,21 @@ import { Navigation } from 'swiper/modules';
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import { useLoaderData } from 'react-router-dom';
 
 
 
 const TESTIMONIALS = () => {
 
-    const [reviews, setReview] = useState([])
+    const data = useLoaderData()
 
-    useEffect(() => {
-        fetch('/reviews.json')
-            .then(res => res.json())
-            .then(data => setReview(data))
-    }, [])
+    const [reviews, setReview] = useState(data)
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/reviews')
+    //         .then(res => res.json())
+    //         .then(data => setReview(data))
+    // }, [])
 
 
     return (
@@ -42,7 +45,7 @@ const TESTIMONIALS = () => {
                                     <input type="radio" name="rating-1" className="mask mask-star" />
                                     <input type="radio" name="rating-1" className="mask mask-star" />
                                 </div> */}
-                                <Rating style={{ maxWidth: 250 }} value={review.rating} readOnly={true}/>
+                                <Rating style={{ maxWidth: 250 }} value={review.rating} readOnly={true} />
 
 
                                 <img className='w-32' src="https://img.icons8.com/3d-fluency/100/quote-left.png" alt="quote-left" />
