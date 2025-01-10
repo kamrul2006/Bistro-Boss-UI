@@ -5,7 +5,7 @@ import CONTACTFORM from '../Components/Contact/CONTACTFORM';
 
 const ContactUsLayout = () => {
     return (
-        <div className='space-y-20'>
+        <div className='space-y-20 min-h-screen'>
             <ConBanner />
 
             <OurLocation />

@@ -7,7 +7,7 @@ const CONTACTFORM = () => {
         <div>
             <HeadingTitle subHeading={"Send Us a Message"} heading={"CONTACT FORM"}></HeadingTitle>
 
-            <div className="flex justify-center items-center min-h-screen bg-gray-100 md:mx-20">
+            <div className="flex justify-center items-center min-h-screen bg-gray-100 md:mx-20 mb-36">
                 <div className="w-full md:w-10/12 p-8 rounded-lg shadow-md">
                     <form className="space-y-4">
 
