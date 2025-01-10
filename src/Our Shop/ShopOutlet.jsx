@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -9,23 +9,21 @@ const ShopOutlet = () => {
     const { cata } = useParams()
     // console.log(cata)
 
-    const [menus, setMenu] = useState([])
+    const data=useLoaderData()
 
-    useEffect(() => {
-        fetch('/menu.json')
-            .then(res => res.json())
-            .then(data => setMenu(data))
-    }, [])
+    const [menus, setMenu] = useState(data)
+
+    // useEffect(() => {
+    //     fetch('/menu.json')
+    //         .then(res => res.json())
+    //         .then(data => setMenu(data))
+    // }, [])
 
     return (
         <div>
             <Tabs>
                 <div className=" uppercase md:mx-36 text-xs md:text-base my-10 font-semibold">
-                    {/* <a role="tab" className="tab">Salad</a>
-                <a role="tab" className="tab tab-active">Pizza</a>
-                <a role="tab" className="tab">soups</a>
-                <a role="tab" className="tab">desserts</a>
-                <a role="tab" className="tab">drinks</a> */}
+                    {/* ----------------react-tab----- */}
                     <TabList>
                         <Tab>Salad</Tab>
                         <Tab>Pizza</Tab>

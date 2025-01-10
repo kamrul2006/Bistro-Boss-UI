@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import HeadingTitle from '../Share/HeadingTitle';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const HomeMenu = () => {
-    const [menus, setMenu] = useState([])
+    const data = useLoaderData()
 
-    useEffect(() => {
-        fetch('/menu.json')
-            .then(res => res.json())
-            .then(data => setMenu(data))
-    }, [])
+    const [menus, setMenu] = useState(data)
+
+    // useEffect(() => {
+    //     fetch('/menu.json')
+    //         .then(res => res.json())
+    //         .then(data => setMenu(data))
+    // }, [])
 
     // console.log(menu)
 

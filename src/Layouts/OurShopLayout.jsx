@@ -7,6 +7,7 @@ const OurShop = () => {
         document.title = "BISTROBoss || Our Shop"
     }, [])
 
+    
     return (
         <div className=''>
 

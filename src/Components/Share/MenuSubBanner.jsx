@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MenuSubBanner = ({ subHeading, heading, bg, cate }) => {
 
     // console.log(cate)
+    const data = useLoaderData()
 
-    const [menus, setMenu] = useState([])
+    const [menus, setMenu] = useState(data)
 
-    useEffect(() => {
-        fetch('/menu.json')
-            .then(res => res.json())
-            .then(data => setMenu(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('/menu.json')
+    //         .then(res => res.json())
+    //         .then(data => setMenu(data))
+    // }, [])
 
     // console.log(menu)
 
@@ -45,7 +46,7 @@ const MenuSubBanner = ({ subHeading, heading, bg, cate }) => {
 
                 <div className='text-center justify-center items-center flex my-10 '>
                     <Link to={`/ourShop/${cate}`}>
-                    <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
+                        <button className='btn btn-outline rounded-full shadow-md shadow-black'> ORDER YOUR FAVORITE FOOD</button>
                     </Link>
                 </div>
 

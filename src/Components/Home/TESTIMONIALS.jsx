@@ -13,15 +13,13 @@ import { useLoaderData } from 'react-router-dom';
 
 const TESTIMONIALS = () => {
 
-    const data = useLoaderData()
+    const [reviews, setReview] = useState([])
 
-    const [reviews, setReview] = useState(data)
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/reviews')
-    //         .then(res => res.json())
-    //         .then(data => setReview(data))
-    // }, [])
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReview(data))
+    }, [])
 
 
     return (

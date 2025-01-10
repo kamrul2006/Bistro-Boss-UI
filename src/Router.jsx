@@ -17,7 +17,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomeLayout />,
-                loader: () => fetch('http://localhost:5000/reviews')
+                loader: () => fetch('http://localhost:5000/menus')
 
             },
             {
@@ -26,11 +26,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menu',
-                element: <OurMenyLayout />
+                element: <OurMenyLayout />,
+                loader: () => fetch('http://localhost:5000/menus')
             },
             {
                 path: '/ourShop/:cata',
-                element: <OurShop />
+                element: <OurShop />,
+                loader: () => fetch('http://localhost:5000/menus')
             },
         ]
     },
