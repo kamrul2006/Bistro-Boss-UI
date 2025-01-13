@@ -5,6 +5,8 @@ import ContactUsLayout from "./Layouts/ContuctUsLayout";
 import ErrorPage from "./Components/FixedToAll/ErrorPage";
 import OurMenyLayout from "./Layouts/OurMenyLayout";
 import OurShop from "./Layouts/OurShopLayout";
+import LoginPage from "./Authentication/Users/Loginpage";
+import SignupPage from "./Authentication/Users/SignupPage";
 
 
 
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/login',
+        element: <LoginPage />
+    },
+    {
+        path: '/register',
+        element: <SignupPage/>
+    }
 ]);
 
 export default router;
