@@ -4,7 +4,7 @@ import bg from "../../assets/others/authentication.png"
 import ill from "../../assets/others/authentication1.png"
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
@@ -22,6 +22,7 @@ const LoginPage = () => {
     }, [])
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     //---------- Context use----------------------
 

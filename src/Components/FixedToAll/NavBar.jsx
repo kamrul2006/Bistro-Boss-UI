@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Active.css"
 import { Link, NavLink } from 'react-router-dom';
 import cart from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
 import pp from "../../assets/others/profile.png"
+import { AuthContext } from '../../Authentication/Providers/AuthProvider';
 
 const NavBar = () => {
+
+    const { user, UserSignOut } = useContext(AuthContext)
+
+
     return (
         <div className='bg-black/50 navbar backdrop-blur fixed max-w-screen-xl mx-auto top-0 z-50 text-white flex items-center justify-between px-10 py-2 text-sm'>
 
@@ -27,11 +32,19 @@ const NavBar = () => {
 
             {/* -----------------------user------------------------ */}
             <div className='flex items-center gap-3'>
-                <img src={pp} alt="👦" className='rounded-full w-12' />
+                {user ?
+                    <div className="flex items-center gap-2">
+                        <button className="btn btn-sm btn-outline btn-warning" onClick={UserSignOut}>Sign Out </button>
+                    </div> :
+                    <div className="flex items-center gap-3">
+                        <img src={pp} alt="👦" className='rounded-full w-12' />
 
-                <Link to={'/login'}>
-                    <button className="btn btn-sm btn-outline btn-warning">Login</button>
-                </Link>
+                        <Link to={'/login'}>
+                            <button className="btn btn-sm btn-outline btn-warning">Login</button>
+                        </Link>
+                    </div>}
+
+
 
             </div>
 

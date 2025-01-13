@@ -7,6 +7,7 @@ import OurMenyLayout from "./Layouts/OurMenyLayout";
 import OurShop from "./Layouts/OurShopLayout";
 import LoginPage from "./Authentication/Users/Loginpage";
 import SignupPage from "./Authentication/Users/SignupPage";
+import PrivetRout from "./Authentication/Privet/Privetrought";
 
 
 
@@ -28,12 +29,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menu',
-                element: <OurMenyLayout />,
+                element: <PrivetRout><OurMenyLayout /></PrivetRout>,
                 loader: () => fetch('http://localhost:5000/menus')
             },
             {
                 path: '/ourShop/:cata',
-                element: <OurShop />,
+                element: <PrivetRout><OurShop /></PrivetRout>,
                 loader: () => fetch('http://localhost:5000/menus')
             },
         ]
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <SignupPage/>
+        element: <SignupPage />
     }
 ]);
 

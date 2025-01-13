@@ -9,6 +9,7 @@ const PrivetRout = ({ children }) => {
 
     const location = useLocation()
     // console.info(location)
+    
 
     if (loading) {
         return <div>
