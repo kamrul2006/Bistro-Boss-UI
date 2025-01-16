@@ -1,20 +1,67 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HeadingTitle from "../Share/HeadingTitle";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate, useRevalidator } from "react-router-dom";
+import { AuthContext } from "../../Authentication/Providers/AuthProvider";
+import Swal from "sweetalert2";
+import axios from "axios";
+import axiosSecure from "../../Hooks/axiosSecure";
 
 const ShouldTry = () => {
     const data = useLoaderData()
+    const navigate = useNavigate()
+    const axiosSecurity = axiosSecure()
 
     const [menus, setMenu] = useState(data)
 
-    // useEffect(() => {
-    //     fetch('/menu.json')
-    //         .then(res => res.json())
-    //         .then(data => setMenu(data))
-    // }, [])
+    const { user } = useContext(AuthContext)
 
-    // console.log(menu)
+    const AddToCart = (e) => {
+        if (user?.email) {
+            const cartData = {
+                name: e.name,
+                category: e.category,
+                price: e.price,
+                addedBy: user.email
+            }
+            axiosSecurity.post('/carts', cartData)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `${e.name} is Added To cart.`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
 
+                    }
+                })
+
+
+
+            // console.log(cartData)
+        }
+        else {
+            Swal.fire({
+                title: "you are not logged in !",
+                text: "For add this item to card you must login .",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ok, Login"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                    // alert('hi')
+                }
+            });
+
+
+        }
+
+
+    }
 
     return (
         <div className='m-20'>
@@ -35,7 +82,9 @@ const ShouldTry = () => {
                             <h2 className="text-xl font-semibold my-2 text-center">{menu.name}</h2>
                             <p>{menu.recipe}</p>
                             <div className="card-actions justify-center mt-5">
-                                <button className="border-b-4 border-black px-5 py-2 rounded-full shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                <button
+                                    onClick={() => AddToCart(menu)}
+                                    className="border-b-4 border-black px-5 py-2 rounded-full shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                             </div>
                         </div>
                     </div>

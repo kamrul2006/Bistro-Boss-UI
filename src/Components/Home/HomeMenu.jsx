@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import HeadingTitle from '../Share/HeadingTitle';
 import { Link, useLoaderData } from 'react-router-dom';
 
@@ -7,13 +7,7 @@ const HomeMenu = () => {
 
     const [menus, setMenu] = useState(data)
 
-    // useEffect(() => {
-    //     fetch('/menu.json')
-    //         .then(res => res.json())
-    //         .then(data => setMenu(data))
-    // }, [])
 
-    // console.log(menu)
 
 
     return (
