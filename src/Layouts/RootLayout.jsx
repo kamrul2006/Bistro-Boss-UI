@@ -5,10 +5,13 @@ import Navbar from "../Authentication/Practise";
 
 const RootLayout = () => {
     return (
-        <div className="max-w-7xl mx-auto">
+        <div >
             <NavBar />
 
-            <Outlet />
+            <div className="max-w-7xl mx-auto mt-16">
+                <Outlet />
+
+            </div>
 
             <Footer />
 

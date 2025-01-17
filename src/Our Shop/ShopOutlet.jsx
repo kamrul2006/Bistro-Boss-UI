@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import axiosSecure from '../Hooks/axiosSecure';
+import { AuthContext } from '../Authentication/Providers/AuthProvider';
+import UseCarts from '../Hooks/UseCarts';
+import Swal from 'sweetalert2';
 
 
 const ShopOutlet = () => {
@@ -9,7 +13,7 @@ const ShopOutlet = () => {
     const { cata } = useParams()
     // console.log(cata)
 
-    const data=useLoaderData()
+    const data = useLoaderData()
 
     const [menus, setMenu] = useState(data)
 
@@ -18,6 +22,62 @@ const ShopOutlet = () => {
     //         .then(res => res.json())
     //         .then(data => setMenu(data))
     // }, [])
+
+    const navigate = useNavigate()
+    const axiosSecurity = axiosSecure()
+
+
+    const { user } = useContext(AuthContext)
+
+    const [, refetch] = UseCarts()
+
+    const AddToCart = (e) => {
+        if (user?.email) {
+            const cartData = {
+                name: e.name,
+                category: e.category,
+                price: e.price,
+                addedBy: user.email
+            }
+            axiosSecurity.post('/carts', cartData)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `${e.name} is Added To cart.`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        refetch()
+                    }
+                })
+
+
+
+            // console.log(cartData)
+        }
+        else {
+            Swal.fire({
+                title: "you are not logged in !",
+                text: "For add this item to card you must login .",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ok, Login"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                    // alert('hi')
+                }
+            });
+
+
+        }
+
+
+    }
 
     return (
         <div>
@@ -54,7 +114,9 @@ const ShopOutlet = () => {
                                     <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
 
                                     <div className="card-actions justify-center my-5">
-                                        <button className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                        <button
+                                            onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +144,9 @@ const ShopOutlet = () => {
                                     <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
 
                                     <div className="card-actions justify-center my-5">
-                                        <button className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                        <button
+                                            onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +174,9 @@ const ShopOutlet = () => {
                                     <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
 
                                     <div className="card-actions justify-center my-5">
-                                        <button className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                        <button
+                                            onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +204,9 @@ const ShopOutlet = () => {
                                     <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
 
                                     <div className="card-actions justify-center my-5">
-                                        <button className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                        <button
+                                            onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +234,8 @@ const ShopOutlet = () => {
                                     <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
 
                                     <div className="card-actions justify-center my-5">
-                                        <button className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                        <button onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -174,8 +243,6 @@ const ShopOutlet = () => {
                         </div>)}
                     </div>
                 </TabPanel>
-
-
 
             </Tabs>
 

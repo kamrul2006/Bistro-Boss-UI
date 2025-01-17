@@ -8,6 +8,7 @@ import OurShop from "./Layouts/OurShopLayout";
 import LoginPage from "./Authentication/Users/Loginpage";
 import SignupPage from "./Authentication/Users/SignupPage";
 import PrivetRout from "./Authentication/Privet/Privetrought";
+import DashBoardLayOut from "./Layouts/DashBoardLayOut";
 
 
 
@@ -36,6 +37,36 @@ const router = createBrowserRouter([
                 path: '/ourShop/:cata',
                 element: <PrivetRout><OurShop /></PrivetRout>,
                 loader: () => fetch('http://localhost:5000/menus')
+            },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashBoardLayOut />,
+        children: [
+            {
+                path: "/dashboard",
+                element: < div > User Home</div>
+            },
+            {
+                path: "/dashboard/reservation",
+                element: < div > Reservation</div >
+            },
+            {
+                path: "/dashboard/payment-history",
+                element: < div > Payment History</div >
+            },
+            {
+                path: "/dashboard/cart",
+                element: < div > My Cart</div >
+            },
+            {
+                path: "/dashboard/add-review",
+                element: < div > Add Review</div >
+            },
+            {
+                path: "/dashboard/my-booking",
+                element: < div > My Booking</div >
             },
         ]
     },

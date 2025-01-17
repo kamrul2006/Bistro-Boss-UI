@@ -5,6 +5,7 @@ import { AuthContext } from "../../Authentication/Providers/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
 import axiosSecure from "../../Hooks/axiosSecure";
+import UseCarts from "../../Hooks/UseCarts";
 
 const ShouldTry = () => {
     const data = useLoaderData()
@@ -14,6 +15,8 @@ const ShouldTry = () => {
     const [menus, setMenu] = useState(data)
 
     const { user } = useContext(AuthContext)
+
+    const [, refetch] = UseCarts()
 
     const AddToCart = (e) => {
         if (user?.email) {
@@ -33,7 +36,7 @@ const ShouldTry = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-
+                        refetch()
                     }
                 })
 
