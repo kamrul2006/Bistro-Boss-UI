@@ -11,12 +11,12 @@ const ShouldTry = () => {
     const data = useLoaderData()
     const navigate = useNavigate()
     const axiosSecurity = axiosSecure()
+    const [, refetch] = UseCarts()
 
     const [menus, setMenu] = useState(data)
 
     const { user } = useContext(AuthContext)
 
-    const [, refetch] = UseCarts()
 
     const AddToCart = (e) => {
         if (user?.email) {
@@ -24,7 +24,9 @@ const ShouldTry = () => {
                 name: e.name,
                 category: e.category,
                 price: e.price,
+                image: e.image,
                 addedBy: user.email
+
             }
             axiosSecurity.post('/carts', cartData)
                 .then(res => {

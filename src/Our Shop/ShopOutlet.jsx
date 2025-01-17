@@ -37,6 +37,7 @@ const ShopOutlet = () => {
                 name: e.name,
                 category: e.category,
                 price: e.price,
+                image: e.image,
                 addedBy: user.email
             }
             axiosSecurity.post('/carts', cartData)

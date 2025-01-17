@@ -9,6 +9,7 @@ import LoginPage from "./Authentication/Users/Loginpage";
 import SignupPage from "./Authentication/Users/SignupPage";
 import PrivetRout from "./Authentication/Privet/Privetrought";
 import DashBoardLayOut from "./Layouts/DashBoardLayOut";
+import MyCarts from "./Components/Dashboard/MyCart";
 
 
 
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/cart",
-                element: < div > My Cart</div >
+                element: <MyCarts />
             },
             {
                 path: "/dashboard/add-review",
