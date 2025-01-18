@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { auth } from "../FireBase/firebase.init";
+import axios from "axios";
 
 
 
@@ -13,7 +12,6 @@ const provider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
-    // console.log(user)
     const [loading, setLoading] = useState(true)
 
 
@@ -37,11 +35,9 @@ const AuthProvider = ({ children }) => {
     const UserSignOut = () => {
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
             })
             .catch((error) => {
-                // An error happened.
-                // console.log(error)
+
             });
     }
 
@@ -70,6 +66,31 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
+
+            if (currentUser?.email) {
+                const user = { email: currentUser?.email };
+
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        // console.log('login token', res.data);
+                        if (res.data.token) {
+                            localStorage.setItem('Bistro-Token', res.data.token)
+                        }
+                        setLoading(false);
+                    })
+
+            }
+            else {
+                localStorage.removeItem('Bistro-Token')
+
+                axios.post('http://localhost:5000/logout', {}, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        // console.log('logout', res.data);
+                        setLoading(false);
+                    })
+            }
             setLoading(false)
         });
 

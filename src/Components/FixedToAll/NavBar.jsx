@@ -43,10 +43,13 @@ const NavBar = () => {
 
             {/* -----------------------user------------------------ */}
             <div className='flex items-center gap-5'>
-                <button className="text-xl relative top-2 mr-4">
-                    <FaCartPlus />
-                    <div className="bg-yellow-400 rounded-full relative px-1 text-xs -top-2 left-5">{cart.length}</div>
-                </button>
+
+                <Link to={'/dashboard/cart'}>
+                    <button className="text-xl relative top-2 mr-4">
+                        <FaCartPlus />
+                        <div className="bg-yellow-400 rounded-full relative px-1 text-xs -top-2 left-5">{cart.length}</div>
+                    </button>
+                </Link>
 
                 {user ?
                     <div className="flex items-center gap-2">

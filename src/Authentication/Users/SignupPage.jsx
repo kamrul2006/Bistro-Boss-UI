@@ -7,12 +7,14 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { auth } from "../FireBase/firebase.init";
 import bg from "../../assets/others/authentication.png"
 import ill from "../../assets/others/authentication1.png"
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 
 
 
 const SignupPage = () => {
 
+    const axiosPublic = UseAxiosPublic()
     const navigate = useNavigate()
     //--------------------------Context use--------------------------
     const { CreateUserByMailPass, setUser, updatedProfile, GoogleLogin } = useContext(AuthContext)
@@ -55,14 +57,29 @@ const SignupPage = () => {
                 const user = userCredential.user;
                 // const time = userCredential.user.metadata.creationTime;
                 setUser(user)
-                setSuccess('Sign Up Successful.')
 
+                const UserInfo = {
+                    name: Name,
+                    email: Email,
+                    role: "user"
+                }
+
+                axiosPublic.post('/users', UserInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            setSuccess('Sign Up Successful.')
+                        }
+                    })
+
+                // -------------updating profile-----------
                 updatedProfile({ displayName: Name })
                     .then(() => {
+                        e.target.reset()
                         navigate('/')
-                    }).catch(err => setError(err.massage))
+                    })
+                    .catch(err => setError(err.massage))
 
-
+                // --------------sending verification ----------
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
                         //                 console.log('Email verification sent!')
@@ -78,7 +95,20 @@ const SignupPage = () => {
             .then((res) => {
                 // console.log(res.user)
                 setUser(res.user)
+
+                const UserInfo = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    role: "user"
+                }
+                
+                setSuccess('Sign Up Successful.')
                 navigate('/')
+
+                axiosPublic.post('/users', UserInfo)
+                    .then(res =>{} )
+
+
             })
             .catch(err => {
                 console.log(err);

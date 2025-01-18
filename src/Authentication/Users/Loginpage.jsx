@@ -6,8 +6,10 @@ import ill from "../../assets/others/authentication1.png"
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const LoginPage = () => {
+    const axiosPublic = UseAxiosPublic()
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
 
@@ -47,7 +49,7 @@ const LoginPage = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user)
-                setSuccess('Sign Up Successful.')
+                setSuccess('LOGIN Successful.')
                 navigate(location.state ? location.state : '/')
             })
             .catch((error) => {
@@ -63,15 +65,28 @@ const LoginPage = () => {
             .then((res) => {
                 // console.log(res.user)
                 setUser(res.user)
-                setSuccess('Sign Up Successful.')
+
+                const UserInfo = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    role: "user"
+                }
+
+                setSuccess('LOGIN Successful.')
                 navigate(location.state ? location.state : '/')
+
+                axiosPublic.post('/users', UserInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+
+                        }
+                    })
             })
             .catch(err => {
                 // console.log(err);
                 setUser(null)
             })
     }
-
 
 
     return (

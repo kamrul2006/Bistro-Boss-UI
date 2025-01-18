@@ -10,6 +10,7 @@ import SignupPage from "./Authentication/Users/SignupPage";
 import PrivetRout from "./Authentication/Privet/Privetrought";
 import DashBoardLayOut from "./Layouts/DashBoardLayOut";
 import MyCarts from "./Components/Dashboard/MyCart";
+import AllUsers from "./Components/Dashboard/AdminTools/AllUsers";
 
 
 
@@ -43,10 +44,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoardLayOut />,
+        element: <PrivetRout><DashBoardLayOut /></PrivetRout>,
+        errorElement: <ErrorPage />,
         children: [
             {
-                path: "/dashboard",
+                path: "/dashboard/user",
                 element: < div > User Home</div>
             },
             {
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/cart",
-                element: <MyCarts />
+                element: <PrivetRout><MyCarts /></PrivetRout>
             },
             {
                 path: "/dashboard/add-review",
@@ -68,6 +70,28 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/my-booking",
                 element: < div > My Booking</div >
+            },
+            // ------------------for admin--------------
+            {
+                path: "/dashboard/admin",
+                element: < div > a h</div >
+            },
+            {
+                path: "/dashboard/addFood",
+                element: < div > My Booking</div >
+            },
+            {
+                path: "/dashboard/ManegeItem",
+                element: < div > My Booking</div >
+            },
+            {
+                path: "/dashboard/ManegeBooking",
+                element: < div > My Booking</div >
+            },
+            {
+                path: "/dashboard/AllUsers",
+                element: <PrivetRout><AllUsers /></PrivetRout>,
+                loader: () => fetch('http://localhost:5000/users')
             },
         ]
     },
