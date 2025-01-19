@@ -13,11 +13,18 @@ import {
 } from "react-icons/fa";
 import { MdFoodBank } from "react-icons/md";
 import { TfiMenuAlt } from "react-icons/tfi";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const Sidebar = () => {
-    const [isOpen, setIsOpen] = useState(false); // For responsive toggle
-    const [activeItem, setActiveItem] = useState(); // For active state
-    const [isAdmin, setAdmin] = useState(true)
+
+    // For responsive toggle
+    const [isOpen, setIsOpen] = useState(false);
+
+    // For check admin ar not
+    const [isAdmin] = UseAdmin()
+
+    // For active state
+    const [activeItem, setActiveItem] = useState();
 
     useEffect(() => {
         if (isAdmin) {
