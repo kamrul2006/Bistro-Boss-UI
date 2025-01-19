@@ -10,18 +10,9 @@ import Swal from 'sweetalert2';
 
 const ShopOutlet = () => {
 
-    const { cata } = useParams()
-    // console.log(cata)
-
     const data = useLoaderData()
 
     const [menus, setMenu] = useState(data)
-
-    // useEffect(() => {
-    //     fetch('/menu.json')
-    //         .then(res => res.json())
-    //         .then(data => setMenu(data))
-    // }, [])
 
     const navigate = useNavigate()
     const axiosSecurity = axiosSecure()
@@ -73,11 +64,7 @@ const ShopOutlet = () => {
                     // alert('hi')
                 }
             });
-
-
         }
-
-
     }
 
     return (
@@ -91,6 +78,7 @@ const ShopOutlet = () => {
                         <Tab>soups</Tab>
                         <Tab>desserts</Tab>
                         <Tab>drinks</Tab>
+                        <Tab>Main Course</Tab>
                     </TabList>
 
                 </div>
@@ -220,6 +208,35 @@ const ShopOutlet = () => {
                 <TabPanel>
                     <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7 mx-20 my-10'>
                         {menus.filter(item => item.category == "drinks").map(menu => <div key={menu._id} className='flex items-center gap-4px-5 py-2' >
+
+                            <div className="card bg-base-100 w-96 shadow-xl">
+                                <figure>
+                                    <p className='text-white bg-black absolute top-4 px-2 rounded-2xl right-2'>${menu.price}</p>
+
+                                    <img
+                                        src={menu.image}
+                                        alt="food" />
+                                </figure>
+                                <div className="card-body bg-gray-100">
+                                    <h2 className="text-xl font-bold text-center">{menu.name}</h2>
+
+                                    <p className='text-xs text-gray-400 h-[60px]'>{menu.recipe}</p>
+
+                                    <div className="card-actions justify-center my-5">
+                                        <button onClick={() => AddToCart(menu)}
+                                            className="border-b-4 border-black px-5 py-2 rounded-xl shadow bg-gray-200 hover:bg-slate-800 hover:border-yellow-600 hover:text-white uppercase text-sm font-semibold">add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>)}
+                    </div>
+                </TabPanel>
+
+                {/* ----------------drinks-------- */}
+                <TabPanel>
+                    <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7 mx-20 my-10'>
+                        {menus.filter(item => item.category == "MainCourse").map(menu => <div key={menu._id} className='flex items-center gap-4px-5 py-2' >
 
                             <div className="card bg-base-100 w-96 shadow-xl">
                                 <figure>

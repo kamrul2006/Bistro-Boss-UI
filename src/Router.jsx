@@ -12,6 +12,8 @@ import DashBoardLayOut from "./Layouts/DashBoardLayOut";
 import MyCarts from "./Components/Dashboard/MyCart";
 import AllUsers from "./Components/Dashboard/AdminTools/AllUsers";
 import AdminPrivet from "./Authentication/Privet/AdminPrivet";
+import AddMenuItem from "./Components/Dashboard/AdminTools/AddMenuItems";
+import AddItems from "./Components/Dashboard/AdminTools/AddItems";
 
 
 
@@ -79,7 +81,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/addFood",
-                element: <AdminPrivet>< div > My Booking</div ></AdminPrivet>
+                // element: <AdminPrivet><AddMenuItem /></AdminPrivet>
+                element: <AdminPrivet><AddItems/></AdminPrivet>
             },
             {
                 path: "/dashboard/ManegeItem",
