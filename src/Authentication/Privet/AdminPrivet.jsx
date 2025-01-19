@@ -1,15 +1,18 @@
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
-import { Navigate, useLocation } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
+import UseAdmin from '../../Hooks/UseAdmin';
 
-const PrivetRout = ({ children }) => {
+const AdminPrivet = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
+
+    const [isAdmin, isPending] = UseAdmin()
 
     const location = useLocation()
     // console.info(location)
-    
 
-    if (loading) {
+
+    if (loading || isPending) {
         return <div>
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
                 <div className="relative w-24 h-24">
@@ -26,7 +29,7 @@ const PrivetRout = ({ children }) => {
         </div>
     }
 
-    if (user) {
+    if (user && isAdmin) {
         return children
     }
 
@@ -35,4 +38,4 @@ const PrivetRout = ({ children }) => {
     );
 };
 
-export default PrivetRout;
+export default AdminPrivet;

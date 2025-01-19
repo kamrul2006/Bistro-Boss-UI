@@ -11,6 +11,7 @@ import PrivetRout from "./Authentication/Privet/Privetrought";
 import DashBoardLayOut from "./Layouts/DashBoardLayOut";
 import MyCarts from "./Components/Dashboard/MyCart";
 import AllUsers from "./Components/Dashboard/AdminTools/AllUsers";
+import AdminPrivet from "./Authentication/Privet/AdminPrivet";
 
 
 
@@ -74,23 +75,23 @@ const router = createBrowserRouter([
             // ------------------for admin--------------
             {
                 path: "/dashboard/admin",
-                element: < div > a h</div >
+                element: <AdminPrivet>< div > a h</div ></AdminPrivet>
             },
             {
                 path: "/dashboard/addFood",
-                element: < div > My Booking</div >
+                element: <AdminPrivet>< div > My Booking</div ></AdminPrivet>
             },
             {
                 path: "/dashboard/ManegeItem",
-                element: < div > My Booking</div >
+                element: <AdminPrivet>< div > My Booking</div ></AdminPrivet>
             },
             {
                 path: "/dashboard/ManegeBooking",
-                element: < div > My Booking</div >
+                element: <AdminPrivet>< div > My Booking</div ></AdminPrivet>
             },
             {
                 path: "/dashboard/AllUsers",
-                element: <PrivetRout><AllUsers /></PrivetRout>,
+                element: <AdminPrivet><AllUsers /></AdminPrivet>,
                 loader: () => fetch('http://localhost:5000/users')
             },
         ]
